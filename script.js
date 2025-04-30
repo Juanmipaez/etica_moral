@@ -67,6 +67,9 @@ const frasesEtica = [
     todas.forEach((fraseObj, i) => {
       const span = document.createElement("span");
       span.textContent = fraseObj.texto;
+      span.dataset.texto = fraseObj.texto;
+      span.addEventListener("click", toggleTooltip);
+
       span.className = "frase";
       span.id = `frase-${i}`;
       span.draggable = true;
@@ -121,4 +124,34 @@ function generarNuevoSet() {
   iniciarPractica(); // simplemente vuelve a ejecutar todo desde cero
   document.getElementById("explicaciones").style.display = "none";
   document.getElementById("explicacionBtn").style.display = "none";
+}
+
+function toggleTooltip(event) {
+  const frase = event.currentTarget;
+  
+  // Cierra cualquier tooltip abierto
+  document.querySelectorAll('.tooltip').forEach(t => t.remove());
+
+  // Verifica si ya tenía tooltip abierto (para permitir cerrar al hacer clic en el mismo)
+  if (frase.dataset.tooltipVisible === "true") {
+    frase.dataset.tooltipVisible = "false";
+    return;
+  }
+
+  // Crea el tooltip
+  const tooltip = document.createElement("div");
+  tooltip.classList.add("tooltip");
+  tooltip.textContent = frase.dataset.texto || frase.textContent;
+
+  frase.appendChild(tooltip);
+  frase.dataset.tooltipVisible = "true";
+
+  // Cierra si se hace clic fuera
+  document.addEventListener("click", function clickOutside(e) {
+    if (!frase.contains(e.target)) {
+      tooltip.remove();
+      frase.dataset.tooltipVisible = "false";
+      document.removeEventListener("click", clickOutside);
+    }
+  });
 }
