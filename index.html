@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ética vs Moral - Interactivo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="inicio">
+    <h1>¿Qué es la ética y la moral?</h1>
+    <div class="contenedor-conceptos">
+      <div class="concepto" id="etica">
+        <h2>Ética</h2>
+        <div class="contenido">
+          <p>La ética estudia lo que está bien o mal desde un punto de vista racional, filosófico y universal. Se basa en principios como la justicia, el deber, los derechos humanos, y busca guiar la conducta más allá de las normas sociales.</p>
+        </div>
+      </div>
+      <div class="concepto" id="moral">
+        <h2>Moral</h2>
+        <div class="contenido">
+          <p>La moral está compuesta por normas, valores y costumbres que una sociedad o cultura considera aceptables. Está influenciada por la religión, la tradición, la familia o la comunidad, y varía de un lugar a otro.</p>
+        </div>
+      </div>
+    </div>
+    <button id="comenzar">Comenzar práctica</button>
+  </div>
+
+  <div id="practica" style="display: none;">
+    <h2>Arrastra cada frase a su categoría correcta</h2>
+    <div class="botones-superiores">
+      <button id="volverTeoria" onclick="volverATeoria()">Volver a la teoría</button>
+      <button id="nuevoSet" onclick="generarNuevoSet()">Nuevo set de frases</button>
+    </div>
+
+    <div class="zona-cajas">
+      <div class="caja" id="caja-principal" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h3>Frases disponibles</h3>
+      </div>
+      <div class="caja" id="caja-etica" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h3>Ética</h3>
+      </div>
+      <div class="caja" id="caja-moral" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <h3>Moral</h3>
+      </div>
+    </div>
+    
+    <button id="evaluar" onclick="evaluarTodo()">Evaluar</button>
+    <button id="explicacionBtn" style="display: none;" onclick="mostrarExplicaciones()">Mostrar Explicación</button>
+    <div id="explicaciones" style="display: none;"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
