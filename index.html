@@ -51,6 +51,8 @@
   <!-- Sección de práctica -->
   <div id="practica" style="display: none;">
     <h2>Arrastra cada frase a su categoría correcta</h2>
+    <h4>Da click sobre cada frase para leerla completa</h4>
+
     <div class="botones-superiores">
       <button id="volverTeoria" onclick="volverATeoria()">
         <i class="fas fa-arrow-left"></i> Volver a la teoría
@@ -59,6 +61,7 @@
         <i class="fas fa-sync-alt"></i> Nuevo set de frases
       </button>
     </div>
+
     <div class="zona-cajas">
       <div class="caja" id="caja-principal" ondrop="drop(event)" ondragover="allowDrop(event)">
         <h3>Frases disponibles</h3>
@@ -70,7 +73,7 @@
         <h3>Moral</h3>
       </div>
     </div>
-   
+
     <button id="evaluar" onclick="evaluarTodo()">
       <i class="fas fa-check-circle"></i> Evaluar
     </button>
